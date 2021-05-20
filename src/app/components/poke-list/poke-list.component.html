@@ -1,0 +1,10 @@
+<div class="pokemon-grid">
+  <!--we make the boxes with the pokemon name and the image, also makes the pagination and get the id from getPokemon -->
+    <div class="box" *ngFor= "let pokemon of pokemons | paginate: {itemsPerPage: 12, currentPage: page, totalItems: numberPokemons} " (click)= 'getPokemon(pokemon.id)'>
+      <img [src]= "pokemon.sprites.front_default" width="100%" height="auto" >
+      <h1>{{pokemon.name.toUpperCase()}}</h1>
+    </div>
+</div>
+<!--this event change the pages-->
+<pagination-controls (pageChange)= "page = $event; pokemons = []; getArrayPokemon()" ></pagination-controls>
+
